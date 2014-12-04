@@ -4,6 +4,8 @@ rvm:
 - 2.1.0
 env: PATH=/usr/games:$PATH
 before_install:
+- ps auxww
+- cat /proc/meminfo
 - sudo apt-get update -qq
 - sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
   dist-upgrade -qq
@@ -16,6 +18,8 @@ before_install:
   rhino scala scilab slsh spl-core swi-prolog tcl ucblogo valac xsltproc yorick zoem
 - sudo service postgresql stop
 - sudo service mysql stop
+- ps auxww
+- cat /proc/meminfo
 before_script:
 - make -C vendor/
 script:

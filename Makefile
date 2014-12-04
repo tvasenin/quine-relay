@@ -102,7 +102,7 @@ QR.sq: QR.sml
 	@echo "##  9: Standard ML -> Subleq  ##"
 	@echo "################################"
 	@echo
-	mlton QR.sml
+	/usr/bin/time -f %M mlton QR.sml
 	./QR > QR.sq
 
 QR.tcl: QR.sq

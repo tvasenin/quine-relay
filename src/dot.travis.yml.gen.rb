@@ -17,11 +17,15 @@ yaml["language"] = "ruby"
 yaml["rvm"] = ["2.1.0"]
 yaml["env"] = "PATH=/usr/games:$PATH"
 yaml["before_install"] = [
+  "ps auxww",
+  "cat /proc/meminfo",
   "sudo apt-get update -qq",
   'sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -qq',
   "sudo apt-get install -qq #{ [*apts.flatten.compact.uniq, *other_packages].sort * " " }",
   "sudo service postgresql stop",
   "sudo service mysql stop",
+  "ps auxww",
+  "cat /proc/meminfo",
 ]
 yaml["before_script"] = [
   "make -C vendor/",
